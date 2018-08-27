@@ -68,6 +68,8 @@ var Fish = React.createClass({
 
   render: function() {
     var details = this.props.details;
+    var isAvailable = (details.status === 'available' ? true : false);
+    var buttonText = (isAvailable ? 'Add to Order' : 'Sold Out!');
 
     return (
       <li className="menu-fish">
@@ -77,6 +79,7 @@ var Fish = React.createClass({
           <span className="price">{helperFuncs.formatPrice(details.price)}</span>
         </h3>
         <p>{details.desc}</p>
+        <button disabled={!isAvailable}>{buttonText}</button>
       </li>
     );
   }
